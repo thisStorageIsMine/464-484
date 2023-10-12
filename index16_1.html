@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+    <script>
+        const ps = document.querySelectorAll("p");
+
+        ps.forEach(p => {
+            const span = document.createElement("span");
+            span.textContent = p.textContent;
+            span.addEventListener("click", function() {
+                if(this.style.textDecoration === "line-through"){
+                    this.style.textDecoration = "";
+                } else {
+                    this.style.textDecoration = "line-through";
+                }
+                
+            })
+            p.textContent = "";
+            p.appendChild(span);
+
+
+            const a = document.createElement("a");
+            a.textContent = "Удалить";
+            a.addEventListener("click", function(event) {
+                event.preventDefault();
+                this.parentNode.remove();
+            });
+            p.appendChild(a);
+        });
+    </script>
+</body>
+</html>

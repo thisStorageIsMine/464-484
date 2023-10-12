@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active1 {
+            background-color: red;
+        }
+
+        .active2 {
+            background-color: rgb(197, 212, 62);
+        }
+
+        .active3 {
+            background-color: rgb(43, 184, 130);
+        }
+
+        .active4 {
+            background-color: rgb(48, 79, 165);
+        }
+
+        .active5 {
+            background-color: rgb(175, 46, 132);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+    </ul>
+    <script>
+        const lis = document.querySelectorAll("li");
+
+        lis.forEach((li, index) => {
+            li.addEventListener("click", () => {
+
+                li.classList.toggle("active"+ ++index);
+            });
+        });
+    </script>
+</body>
+</html>

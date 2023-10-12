@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table"></table>
+    <script>
+        let table = document.querySelector('#table');
+
+        let k = 2; // начальное значение счетчика
+        for (let i = 0; i < 5; i++) {
+            let tr = document.createElement('tr');
+            
+            for (let i = 0; i < 5; i++) {
+                let td = document.createElement('td');
+                
+                td.textContent = k; // записываем 
+                     
+                k+=2; // увеличиваем счетчик
+                
+                tr.appendChild(td);
+            }
+            
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>

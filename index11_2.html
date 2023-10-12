@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table">
+        <tr>
+            <td>2</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>45</td>
+            <td>1</td>
+        </tr>
+    </table>
+    <script>
+        const table = document.getElementById("table");
+        const trs = table.querySelectorAll("tr");
+
+        trs.forEach(function(tr) {
+            const removeTd = document.createElement("td");
+            removeTd.textContent = "remove this row";
+            removeTd.addEventListener("click", function(){
+                this.parentNode.remove();
+            });
+            tr.append(removeTd);
+        });
+    </script>
+</body>
+</html>

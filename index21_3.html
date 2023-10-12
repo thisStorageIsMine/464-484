@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="fansyHoverEffect.css">
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+
+        </ul>
+
+        <input type="text" id="name" placeholder="name">
+        <input type="text" id="age" placeholder="age">
+        <input type="text" id="salary" placeholder="salary">
+        <a href="#" class="fansy-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Добавить
+        </a>
+    </div>
+    
+    <script>
+        const table = document.querySelector("ul");
+        const nameInput = document.getElementById("name");
+        const ageInput = document.getElementById("age");
+        const salaryInput = document.getElementById("salary");
+        const add = document.querySelector("a");
+        let employees = [
+            {name: 'employee1', age: 30, salary: 400},
+            {name: 'employee2', age: 31, salary: 500},
+            {name: 'employee3', age: 32, salary: 600},
+        ];
+
+        function editTd(){
+            const input = document.createElement("input");
+            const self = this;
+            input.value = self.textContent;
+            self.textContent = "";
+            
+            input.addEventListener("blur", function() {
+                self.textContent = this.value;
+                this.remove();
+            });
+            
+            self.append(input);
+            input.focus();
+        }
+
+        function removeTr() {
+            this.parentNode.remove();
+        }
+
+        function render() {
+            table.innerHTML = "";
+            employees.forEach(item => {
+                const tr = document.createElement("li");
+                const removeTd = document.createElement("span");
+                const nameTd = document.createElement("span");
+                const ageTd = document.createElement("span");
+                const salaryTd = document.createElement("span");
+
+                removeTd.textContent = "Remove";
+                nameTd.textContent = item.name;
+                ageTd.textContent = item.age;
+                salaryTd.textContent = item.salary;
+
+                removeTd.addEventListener("click", removeTr);
+                nameTd.addEventListener("click", editTd);
+                ageTd.addEventListener("click", editTd);
+                salaryTd.addEventListener("click", editTd);
+                
+                tr.append(nameTd, ageTd, salaryTd,removeTd);
+                table.append(tr);
+            });
+        }
+        
+
+        add.addEventListener("click", function(event) {
+            event.preventDefault();
+            const obj = {
+                name: nameInput.value,
+                age: +ageInput.value,
+                salary: +salaryInput.value
+            };
+            nameInput.value = "";
+            ageInput.value = "";
+            salaryInput.value = "";
+
+            
+            employees.push(obj);
+            render();
+        });
+
+
+        render();
+    </script>
+</body>
+</html>

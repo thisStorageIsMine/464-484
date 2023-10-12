@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table"></table>
+    <script>
+        const table = document.querySelector("#table");
+        let employees = [
+            {name: 'employee1', age: 30, salary: 400},
+            {name: 'employee2', age: 31, salary: 500},
+            {name: 'employee3', age: 32, salary: 600},
+        ];
+        for (const employee of employees) {
+            const tr = document.createElement("tr");
+
+            const tdName = document.createElement("td");
+            tdName.textContent = employee.name;
+            
+            const tdAge = document.createElement("td");
+            tdAge.textContent = employee.age;
+            tdAge.addEventListener("click", function(){
+                this.textContent = +this.textContent +1;
+            });
+
+            const tdSalary = document.createElement("td");
+            tdSalary.textContent = employee.salary;
+            tdSalary.addEventListener("click", function(){
+                this.textContent = Math.floor(+this.textContent *1.1);
+            });
+
+            tr.append(tdName, tdAge, tdSalary);
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>

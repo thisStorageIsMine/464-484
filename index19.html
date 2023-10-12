@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+        <li>X</li>
+    </ul>
+    <script>
+        const lis = document.querySelectorAll("li");
+
+        lis.forEach(li => {
+            li.addEventListener("click", () => {
+                li.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>

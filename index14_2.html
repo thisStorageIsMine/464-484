@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-2</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Прив</td>
+            <td>Прив</td>
+            <td>Прив</td>
+        </tr>
+        <tr>
+            <td>Hi</td>
+            <td>Hi</td>
+            <td>Hi</td>
+        </tr>
+    </table>
+</div>
+<script>
+    const tds = document.querySelectorAll("td");
+    tds.forEach(td => {
+        td.addEventListener("click", function f(event) {
+        
+        if(event.target.tagName==="TD"){
+            const input = document.createElement("input");
+            input.value = td.textContent;
+            td.textContent = "";
+            
+            input.addEventListener("blur", function(event) {
+                td.textContent = input.value;
+                input.remove()
+            });
+            td.appendChild(input);
+            input.focus();
+        }
+        
+        
+    });
+    })
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+
+    </ol>
+    <input type="text" id="add">
+    <script>
+        const ol = document.querySelector("ol");
+        const add = document.getElementById("add");
+        const array = [213,214,"Володя"];
+
+        function render() {
+            ol.innerHTML = "";
+            array.forEach((item, index) => {
+                const a = document.createElement("a");
+                a.textContent = " : Удаляю";
+                a.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    this.parentNode.remove();
+                    array.splice(index,1);
+                });
+
+                const span = document.createElement("span");
+                span.textContent = item;
+
+                span.addEventListener("click", function(event) {
+                    const input = document.createElement("input");
+                    input.value = span.textContent;
+                    span.textContent = "";
+                    
+                    input.addEventListener("blur", function() {
+                        span.textContent = this.value;
+                        this.remove();
+                    });
+                    
+                    span.append(input);
+                    input.focus();
+                });
+
+                const a2 = document.createElement("a");
+                a2.textContent = "| Перечеркнуть";
+                a2.addEventListener("click", function(event) {
+                    if(span.style.textDecoration === ""){
+                        span.style.textDecoration = "line-through";
+                    } else {
+                        span.style.textDecoration = "";
+                    }
+                });
+
+                const li = document.createElement("li");
+                li.appendChild(span);
+                li.appendChild(a);
+                li.append(a2);
+                ol.append(li);
+            });
+        }
+        
+
+        add.addEventListener("blur", function() {
+            array.push(this.value);
+            render()
+        });
+        render();
+    </script>
+</body>
+</html>

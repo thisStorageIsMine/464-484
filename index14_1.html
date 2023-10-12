@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14</title>
+</head>
+<body>
+    <ul>
+        <li>Первый</li>
+        <li>Второй</li>
+        <li>Третий</li>
+    </ul>
+</div>
+<script>
+    const lis = document.querySelectorAll("li");
+    lis.forEach(li => {
+        li.addEventListener("click", function f(event) {
+        
+        if(event.target.tagName==="LI"){
+            const input = document.createElement("input");
+            input.value = li.textContent;
+            li.textContent = "";
+            
+            input.addEventListener("blur", function(event) {
+                li.textContent = input.value;
+                input.remove()
+            });
+            li.appendChild(input);
+            input.focus();
+        }
+        
+        
+    });
+    })
+    
+</script>
+</body>
+</html>

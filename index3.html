@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="rows">
+    <input type="number" id="columns">
+    <table id="table"></table>
+    <script>
+        const rows = document.querySelector("#rows");
+        const columns = document.querySelector("#columns");
+        const inputs = document.querySelectorAll("input");
+        const table = document.querySelector("#table");
+        
+        inputs.forEach( input => {
+            input.addEventListener("blur", () => {
+                if(rows.value!=="" && columns.value!==""){
+                    for (let i = 0; i < +rows.value; i++) {
+                        let tr = document.createElement('tr');
+                        
+                        for (let i = 0; i < +columns.value; i++) {
+                            let td = document.createElement('td');
+                            td.textContent = "1";
+                            tr.appendChild(td);
+                        }
+                        
+                        table.appendChild(tr);
+                    }
+                }
+            });
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+:root {
+    --befor-hover:#f64c72;
+    --spans: #2f2fa2;
+    --after-hover:#242582;
+    --btn-text-before:#ffffff;
+    --btn-text-after:#f64c72;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #99738e;
+    padding-top: 350px;
+    z-index: -2;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: min(100%, 1000px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 100px;
+    gap: 15px;
+}
+
+td, li > span {
+    padding: 5px;
+}
+
+.fansy-btn {
+    margin-top: 100px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--btn-text-before);
+    font-size: 2em;
+    position: relative;
+    border: 1px solid black;
+    transition: all 0.4s ease-in;
+    transition-delay: 0.2s;
+    position: relative;
+}
+
+.fansy-btn::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: 0.4s;
+    transition-delay: 0.2s;
+    background-color: var(--after-hover);
+}
+
+.fansy-btn:hover::before {
+    transform-origin: center;
+    transform: scale(1);
+}
+
+.fansy-btn:hover {
+
+    color: var(--btn-text-after);
+}
+
+.fansy-btn span:nth-child(1),
+.fansy-btn span:nth-child(3) {
+    position: absolute;
+    width: 35px;
+    height: 6px;
+    background-color: var(--spans);
+    transition: all 0.4s ease-in-out;
+    top: calc(50% - 3px);
+    border-radius: 3px;
+}
+
+.fansy-btn span:nth-child(2),
+.fansy-btn span:nth-child(4) {
+    position: absolute;
+    width: 6px;
+    height: 35px;
+    background-color: var(--spans);
+    transition: all 0.4s ease-in-out;
+    right: calc(50% - 3px);
+    border-radius: 3px;
+}
+
+.fansy-btn span:nth-child(1) {
+    left: -30%;
+    transform-origin: left;
+}
+
+.fansy-btn:hover span:nth-child(1) {
+    left: 30%;
+    opacity: 0;
+}
+
+.fansy-btn span:nth-child(3) {
+    right:  -30%;
+    transform-origin: right;
+}
+
+.fansy-btn:hover span:nth-child(3) {
+    right:  30%;
+    opacity: 0;
+}
+
+.fansy-btn span:nth-child(2) {
+    top: -75%;
+    transform-origin: top;
+}
+
+.fansy-btn:hover span:nth-child(2) {
+    top: 75%;
+    opacity: 0;
+}
+
+.fansy-btn span:nth-child(4) {
+    bottom:  -75%;
+    transform-origin: bottom;
+}
+
+.fansy-btn:hover span:nth-child(4) {
+    bottom:  75%;
+    opacity: 0;
+}

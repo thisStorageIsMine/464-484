@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="elem"></ul>
+
+    <script>
+        const elem = document.querySelector("#elem");
+        function addSymbol(){
+            let isSymbolAdded = false;
+            return (event) => {
+                const li = event.target.closest("li");
+                
+                if(li && !isSymbolAdded){
+                    isSymbolAdded = true;
+                    console.log(li.textContent + " : " + isSymbolAdded);
+                    li.textContent += "!";
+                } else {
+                    console.log(li.textContent);
+                }
+            }
+            
+        };
+       
+        let arr = [1, 2, 3, 4, 5];
+        arr.forEach( item => {
+            const create = document.createElement("li");
+            create.textContent = item;
+            create.addEventListener("click", addSymbol());
+            elem.append(create);
+        });
+        
+    </script>
+</body>
+</html>

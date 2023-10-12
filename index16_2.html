@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+        </tr>
+    </table>
+    <script>
+        const table = document.querySelector("table");
+        const trs = document.querySelectorAll("tr");
+        const tds = document.querySelectorAll("td");
+
+        trs.forEach(tr => {
+            const newTd = document.createElement("td");
+            newTd.textContent = "Покрасить Ряд";
+            newTd.style.cursor = "pointer";
+            newTd.addEventListener("click", function() {
+                if(this.parentNode.style.backgroundColor === "green"){
+                    this.parentNode.style.backgroundColor = "";
+                } else {
+                    this.parentNode.style.backgroundColor = "green";
+                }
+                
+            });
+            tr.appendChild(newTd);
+        });
+    </script>
+</body>
+</html>

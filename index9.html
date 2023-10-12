@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="parent">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+    <input type="submit" id="button">
+    <script>
+        const parent = document.querySelector("#parent");
+        const btn = document.querySelector("#button");
+
+        parent.addEventListener("click", function() {
+            const li = event.target.closest("li");
+            if(li){
+                li.remove();
+            }
+        })
+        btn.addEventListener("click", ()=>{
+            const nextNumber = +parent.lastElementChild.textContent +1;
+
+            const li = document.createElement("li");
+            li.textContent = nextNumber;
+            parent.append(li);
+        });
+    </script>
+</body>
+</html>

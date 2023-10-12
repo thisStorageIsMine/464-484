@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p id="elem">text</p>
+    <input type="submit" id="show" value="show">
+
+    <script>
+        let elem = document.querySelector('#elem');
+        let show = document.querySelector('#show');
+
+        show.addEventListener("click", function() {
+            elem.classList.toggle("hidden")
+        });
+
+
+    </script>
+</body>
+</html>

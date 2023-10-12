@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="parent">
+        <p>text1</p>
+        <p>text2</p>
+        <p>text3</p>
+    </div>
+    <script>
+        const ps = document.querySelectorAll("p");
+        ps.forEach(p => {
+            const span = document.createElement("span");
+            span.textContent = p.textContent;
+            span.addEventListener("click", () => {
+                const input = document.createElement("input");
+                input.value = span.textContent;
+                span.textContent = "";
+                
+                input.addEventListener("blur", function(event) {
+                    span.textContent = input.value;
+                    input.remove()
+                });
+                span.appendChild(input);
+                input.focus();
+            })
+
+            p.textContent = "";
+            p.appendChild(span)
+
+
+            const a = document.createElement("a");
+            a.textContent = "Удалить";
+
+            a.addEventListener("click", function(event) {
+                event.preventDefault();
+                this.parentNode.remove();
+            })
+            p.appendChild(a);
+        });
+    </script>
+</body>
+</html>
